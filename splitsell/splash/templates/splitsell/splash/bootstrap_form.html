@@ -1,0 +1,23 @@
+{% load i18n %}
+    <fieldset>
+        {% for field in form %}
+            <div class="control-group{% if field.errors %} error{% endif %}">
+                <label class="control-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+                <div class="controls">{{ field }}
+
+                    {% if field.errors %}
+                    <span class="help-inline">
+                        {% for error in  field.errors %}{{ error }}{% endfor %}
+                    </span>
+                    {% endif %}
+
+                    {% if field.help_text %}
+                        <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </fieldset>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary" >{% trans "Submit" %}</button>
+    </div>

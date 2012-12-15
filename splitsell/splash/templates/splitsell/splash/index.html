@@ -1,0 +1,47 @@
+{% extends "splitsell/splash/base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="frontpage-logo">
+    <img src="{{ STATIC_URL }}splitsell/img/splitsell-logo-medium.png" alt="Splitsell affiliate network" />
+
+    <h1>An affiliate platform tailored for Magento Commerce</h1>
+
+</div>
+
+<div class="newsletter-subscribed-message" {% if not subscribed %} style="display: none;"{% endif %}>
+    <h3>Thanks for your email! We'll be in touch.</h3>
+</div>
+
+<form class="form-horizontal span5 newsletter-form" method="post" action="{% url "splash-index" %}" {% if subscribed %} style="display: none;" {% endif %}>{% csrf_token %}
+    <fieldset>
+        {% for field in form %}
+            {% ifequal forloop.counter0 1 %}
+            <div class="control-group{% if field.errors %} error{% endif %}">
+                <label class="radio inline">
+                    <input type="radio" name="category" value="merchant" {% ifequal field.value "merchant" %} checked="checked"{% endifequal %}>
+                    {% trans "I am a Magento store owner" %}
+                </label>
+                <label class="radio inline">
+                    <input type="radio" name="category" value="publisher" {% ifequal field.value "publisher" %} checked="checked"{% endifequal %}>
+                    {% trans "I am an affiliate" %}
+                </label>
+            </div>
+            {% else %}
+            <div class="control-group{% if field.errors %} error{% endif %}">
+
+                    <input type="text" maxlength="75" name="email" id="id_email" placeholder="{% trans "Email address" %}" value="{% if field.value %}{{ field.value }}{% endif %}">
+
+
+                    {% if field.help_text %}
+                        <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                    {% endif %}
+            </div>
+            {% endifequal %}
+        {% endfor %}
+    </fieldset>
+    <button type="submit" class="btn btn-primary" >{% trans "Notify me when splitsell is ready" %}</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% trans "Affiliate for Magento - SplitSell.com" %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="/static/splitsell/css/splitsell.css" rel="stylesheet">
+        <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+        <script src="/static/jquery.js"></script>
+        <script src="/static/bootstrap/js/bootstrap.js"></script>
+
+        <!-- Google analytics -->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-37043340-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+        {% block endhead %}{% endblock %}
+    </head>
+    <body>
+
+        {% block nav %}
+        <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </a>
+              <a class="brand" href="{% url "splash-index" %}">{% trans "splitsell.com" %}</a>
+            </div>
+          </div>
+        </div>
+        {% endblock %}
+
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+
+        {% block endbody %}{% endblock %}
+    </body>
+</html>
