@@ -1,0 +1,36 @@
+
+body {
+    padding-top: 60px;
+}
+
+.frontpage-logo {
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.frontpage-logo img {
+    margin: 0 auto;
+    display: block;
+}
+
+.frontpage-logo h1 {
+    font-size: 20px;
+    font-style: italic;
+}
+
+.container .newsletter-form {
+    text-align: center;
+    display: block;
+    float: none;
+    margin: 0 auto;
+}
+
+.container .newsletter-form label.radio {
+    text-align: left;
+}
+
+.container .newsletter-subscribed-message {
+    text-align: center;
+    margin-top: 20px; 
+}
